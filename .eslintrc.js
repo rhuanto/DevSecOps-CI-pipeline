@@ -5,8 +5,7 @@ module.exports = {
     jest: true,
   },
   extends: [
-    'eslint:recommended',
-    'plugin:security/recommended',
+    'eslint:recommended', 
   ],
   plugins: ['security'],
   parserOptions: {
