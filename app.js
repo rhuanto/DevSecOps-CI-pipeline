@@ -38,6 +38,11 @@ app.use((err, req, res, next) => {
   res.status(500).json({ error: 'Error interno del servidor' });
 });
 
+// Ruta insegura simulada para Evidencia 4
+app.get('/peligro', (req, res) => {
+  eval(req.query.code);
+});
+
 app.listen(PORT, () => {
   console.log(`Servidor corriendo en puerto ${PORT}`);
 });
