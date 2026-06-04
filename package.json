@@ -1,0 +1,29 @@
+{
+  "name": "devsecops-ci-demo",
+  "version": "1.0.0",
+  "description": "App Node.js + Express para práctica DevSecOps CI en Azure App Service",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js",
+    "test": "jest --coverage",
+    "lint": "eslint . --ext .js",
+    "audit:ci": "npm audit --audit-level=high"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "dependencies": {
+    "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "eslint": "^8.57.0",
+    "eslint-plugin-security": "^3.0.0",
+    "jest": "^29.7.0",
+    "nodemon": "^3.0.3",
+    "supertest": "^6.3.4"
+  },
+  "keywords": ["devsecops", "azure", "ci", "express"],
+  "author": "Estudiante Ingeniería de Sistemas",
+  "license": "MIT"
+}
