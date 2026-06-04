@@ -56,7 +56,6 @@ jobs:
 
   # ──────────────────────────────────────────────────────────
   # JOB 2 — SAST: Análisis Estático de Seguridad del Código
-  #          ESLint + eslint-plugin-security
   # ──────────────────────────────────────────────────────────
   security-sast:
     name: "🔒 SAST — Escaneo Estático del Código"
@@ -75,25 +74,9 @@ jobs:
       - name: "📦 Instalar dependencias"
         run: npm ci
 
-      # SAST — ESLint con plugin de seguridad
+      # SAST — ESLint con plugin de seguridad (Sin SARIF)
       - name: "🔍 SAST — ESLint Security Scan"
         run: npx eslint . --ext .js --format stylish
-        # Para que el pipeline NO falle y solo reporte, agrega: || true
-
-      # Genera reporte SARIF para visualización en GitHub Security tab
-      - name: "📄 SAST — Generar reporte SARIF"
-        if: always()
-        run: |
-          npx eslint . --ext .js \
-            --format @microsoft/eslint-formatter-sarif \
-            --output-file eslint-results.sarif || true
-
-      - name: "⬆️ Subir resultados SARIF a GitHub Security"
-        if: always()
-        uses: github/codeql-action/upload-sarif@v3
-        with:
-          sarif_file: eslint-results.sarif
-        continue-on-error: true
 
   # ──────────────────────────────────────────────────────────
   # JOB 3 — TEST: Pruebas unitarias + reporte de cobertura
